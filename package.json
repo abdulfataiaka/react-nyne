@@ -1,0 +1,9 @@
+{
+  "name": "react-nyne",
+  "version": "1.0.0",
+  "description": "This is a simple react game application",
+  "main": "index.js",
+  "repository": "https://github.com/abdulfataiaka/react-nyne.git",
+  "author": "Abdulfatai <abdulfataiaka@gmail.com>",
+  "license": "MIT"
+}
