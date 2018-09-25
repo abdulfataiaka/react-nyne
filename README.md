@@ -21,3 +21,7 @@ The below list includes technologies put together to build this application
 ### Author
 
 Abdulfatai Aka - `Software Developer` - [Andela](https://andela.com)
+
+### Notes
+- Writing tests
+- linting

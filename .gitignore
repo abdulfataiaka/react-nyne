@@ -1,0 +1,5 @@
+# ignore system generated files
+.DS_Store
+
+# ignore node_modules in current and sub directories
+node_modules/
