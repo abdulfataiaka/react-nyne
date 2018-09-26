@@ -25,3 +25,11 @@ Abdulfatai Aka - `Software Developer` - [Andela](https://andela.com)
 ### Notes
 - Writing tests
 - linting
+- Timer
+- Points
+
+### Things to do
+- Setup linting
+- Setup testing environment ( Enzyme | Moca | Chai | Jest )
+- Setup Hosting on now.
+

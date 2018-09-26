@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: Helvetica, sans-serif, Arial;
+}
+
+.clearfix {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+.btn-unstyled {
+  display: inline-block;
+  border: 1px solid $lightgray;
+  border-radius: 2px;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  background: none;
+}
