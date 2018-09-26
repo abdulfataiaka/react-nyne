@@ -1,0 +1,22 @@
+@mixin round-button($background, $marginBottom, $float: 1) {
+  display: block;
+  border: none;
+  float: left;
+  color: white;
+  background: $background;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 50%;
+  margin: 0 calc((20% - 30px) / 2) $marginBottom;
+  overflow: hidden;
+
+  @if ( $float == 0) {
+    display: inline-block;
+    float: none;
+  } 
+}

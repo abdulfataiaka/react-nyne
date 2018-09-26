@@ -1,0 +1,140 @@
+#wrapper {
+  display: block;
+  width: 40%;
+  margin: 50px auto;
+  max-width: 320px;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid $lightgray;
+
+  min-height: 300px;
+
+  header {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    padding: 15px 0;
+    background: #228be6;
+  }
+
+  main {
+    // Required for modals
+    position: relative;
+    overflow: hidden;
+
+    #stars {
+      width: 95%;
+      height: 110px;
+      margin: 30px auto 0;
+      overflow: hidden;
+      // text-align: center;
+
+      i {
+        display: inline-block;
+        font-size: 20px;
+        margin: 0 calc((19% - 20px) / 2) 30px;
+      }
+    }
+
+    #answers {
+      display: block;
+      height: 50px;
+      background: $lighter-gray;
+      overflow: hidden;
+
+      .message {
+        display: block;
+        font-size: 15px;
+        font-weight: 100;
+        width: 84%;
+        margin: 15px auto 0;
+      }
+
+      .selected {
+        display: block;
+        margin-top: 10px;
+        padding: 0 2.5%;
+        text-align: center;
+
+        button {
+          @include round-button(
+            $green, 25px, 0
+          );
+        }
+      }
+    }
+
+    #numpad {
+      display: block;
+      padding: 30px 2.5% 5px;
+
+      button {
+        @include round-button($blue, 25px);
+
+        &:last-child {
+          border-radius: 2px;
+          width: 45px;
+          height: 34px;
+          font-size: 17px;
+          margin: -1px calc((20% - 45px) / 2) 25px;
+          background: $green;
+        }
+      }
+    }
+
+    #refresh {
+      display: block;
+      width: 84%;
+      background: $lighter-gray;
+      text-align: center;
+      padding: 15px 8% 13px;
+
+      button {
+        display: block;
+        border: none;
+        float: left;
+        color: white;
+        background: $yellow;
+        padding: 7px 15px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 2px;
+
+        i {
+          margin-right: 5px;
+        }
+      }
+
+      div {
+        display: block;
+        float: left;
+        font-weight: 500;
+        font-size: 15px;
+        margin: 7px 0 0 10px;
+        font-style: italic;
+      }
+
+      .thumb {
+        display: block;
+        float: right;
+        margin: 1px 0 0;
+        font-size: 25px;
+        color: $white;
+        color: $lightgray;
+
+        &.up { color: $green; }
+        &.down {
+          color: $red;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+}
+
