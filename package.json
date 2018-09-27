@@ -7,7 +7,7 @@
   "author": "Abdulfatai <abdulfataiaka@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "tests": "./node_modules/jest/bin/jest.js"
   },
   "dependencies": {
     "react": "^16.5.2",
