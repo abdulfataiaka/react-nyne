@@ -7,6 +7,7 @@
   "author": "Abdulfatai <abdulfataiaka@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server",
     "tests": "./node_modules/jest/bin/jest.js"
   },
   "dependencies": {
