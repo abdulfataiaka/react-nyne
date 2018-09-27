@@ -29,6 +29,8 @@ module.exports = {
   },
   devServer: {
     hot: true,
+    disableHostCheck: true,
+    compress: true,
     contentBase: path.join(__dirname, 'src'),
     watchContentBase: true,
     overlay: true,
