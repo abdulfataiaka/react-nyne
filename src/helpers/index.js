@@ -33,8 +33,7 @@ export const range = (start, end) => {
  * 
  * @description get uncommon items between two arrays
  * 
- * @param {*} array1 
- * @param {*} array2
+ * @param {*} array
  * 
  * @returns { Array }
  * 
