@@ -61,7 +61,6 @@ class App extends Component {
 
       const check = (
         refresh === 0 &&
-        prevState.refresh !== 0 &&
         !this.possibleCombExists(used, stars)
       );
 
