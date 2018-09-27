@@ -1,35 +1,52 @@
-# react-nyne
-This is a simple react game application
+# React-Nyne
+This is a simple react game application which requires players to select different possible combinations of numbers based on the number of stars shown to them.
 
-# About the game
+Players wins the game when they successfully use all available numbers while they have the ability to refresh the number stars shown by clicking on the refresh button a limited number of times, usually `5 times`.
 
-# Features
+Players looses the game when they have no more refresh counts and there is no possible combination available for the displayed number of stars.
 
-# How to run the game
+## Getting started
 
-# Running tests
+The requirements for this application includes
+- [NodeJS v8.11.3+](https://nodejs.org/en/)
+- [Yarn Package Manager](https://yarnpkg.com/en/docs/install#mac-stable)
 
-### Development technologies
+To run the application on your local machine, follow the steps below
+```console
+
+$ git clone https://github.com/abdulfataiaka/react-nyne.git
+
+$ yarn install
+
+$ yarn start
+
+```
+
+## Running tests
+
+Tests has been written to ensure implementations don't break at any point in time. Run the tests using the command below.
+
+If jest has been installed local to the project, Run
+```console
+$ yarn run tests
+```
+
+Otherwise, Run
+```console
+$ jest
+```
+
+## Development technologies
 
 The below list includes technologies put together to build this application
-- React Library
-- HTML5
-- SCSS 
-- Babel 7
-- Font Awesome
+- [React Library](https://reactjs.org/docs/)
+- [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/)
+- [SCSS](https://sass-lang.com/)
+- [Enzyme](http://airbnb.io/enzyme/)
+- [Babel 7](https://babeljs.io/docs/)
+- [Jest](https://jestjs.io/)
+- [Font Awesome](https://fontawesome.com/icons)
 
-### Author
+## Author
 
 Abdulfatai Aka - `Software Developer` - [Andela](https://andela.com)
-
-### Notes
-- Writing tests
-- linting
-- Timer
-- Points
-
-### Things to do
-- Setup linting
-- Setup testing environment ( Enzyme | Moca | Chai | Jest )
-- Setup Hosting on now.
-
