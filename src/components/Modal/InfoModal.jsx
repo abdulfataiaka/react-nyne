@@ -20,10 +20,12 @@ class InfoModal extends Component {
   }
 
   render() {
+    const { message } = this.props;
+    
     return (
       <div id="info-modal" className="modal-content">
         <div className="message">
-          Maximum of 5 answers is allowed for selection
+          { message }
         </div>
         <div>
           <button
