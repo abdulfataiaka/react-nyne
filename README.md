@@ -36,6 +36,36 @@ Otherwise, Run
 $ jest
 ```
 
+## Deployment
+
+This game application has been deployed on now, install `NOW` with yarn globally
+```console
+
+$ yarn global add now
+
+```
+
+See all deployed instances of `react-nyne` app
+```console
+
+$ now list react-nyne
+
+```
+
+To remove the deployed instances for `react-nyne` app
+```console
+
+$ now remove react-nyne
+
+```
+
+To deploy application again, checkout to the instance of the app you want to deploy
+```console
+
+$ now deploy
+
+```
+
 ## Development technologies
 
 The below list includes technologies put together to build this application
