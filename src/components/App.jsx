@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Stars from './Stars';
 import Numpad from './Numpad';
 import Modal from './Modal/Index';
+import { modalTypes } from '../helpers';
 
 /**
  * 
@@ -13,8 +14,6 @@ import Modal from './Modal/Index';
  * @returns { JSX }
  */
 class App extends Component {
-  modalTypes = [ 'info' ];
-
   state = {
     stars: 9,
     answers: [ 4, 5, 6 ],
@@ -28,7 +27,7 @@ class App extends Component {
   }
 
   openModal = (type, props={}) => {
-    if (!this.modalTypes.includes(type)) {
+    if (!modalTypes.includes(type)) {
       return;
     }
 
@@ -53,7 +52,9 @@ class App extends Component {
 
     return (
       <span className={`thumb ${type}`}>
-        <i className={`fas fa-thumbs-${ type === 'down' ? 'down' : 'up' }`} />
+        <i className={`fas fa-thumbs-${
+          type === 'down' ? 'down' : 'up'
+        }`} />
       </span>
     );
   }
@@ -92,7 +93,6 @@ class App extends Component {
         <main>
           <Modal
             {...modal}
-            show={modal.type}
             close={this.closeModal}
           />
 
