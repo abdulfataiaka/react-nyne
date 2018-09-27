@@ -1,5 +1,8 @@
 # ignore system generated files
 .DS_Store
 
+# ignore other generated files
+/jest.config.sample.js
+
 # ignore node_modules in current and sub directories
 node_modules/
