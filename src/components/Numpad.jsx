@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 /**
  * 
@@ -21,11 +21,12 @@ const Numpad = ({
   );
 
   return (
-    <Fragment>
+    <section id="numpad" className="clearfix">
       { range.map(num => (
         <button
           key={num}
           type="button"
+          id={`numpad-{num}`}
           onClick={numClick}
           className={ grayedNums.includes(num) ? 'grayed' : '' }
           disabled={ grayedNums.includes(num) }
@@ -35,13 +36,14 @@ const Numpad = ({
       )) }
       <button
         type="button"
+        id="numpad-check"
         className={ !selected.length ? 'grayed' : '' }
         disabled={ !selected.length }
         onClick={checkClick}
       >
         <i className="fas fa-check" />
       </button>
-    </Fragment>
+    </section>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 /**
  * 
@@ -13,7 +13,7 @@ const Stars = ({ count }) => {
   const emptyRange = Array(count).fill(null);
 
   return (
-    <Fragment>
+    <section id="stars">
       {
         emptyRange.map((item, index) => (
           <i
@@ -22,7 +22,7 @@ const Stars = ({ count }) => {
           />
         ))
       }
-    </Fragment>
+    </section>
   )
 
 }
