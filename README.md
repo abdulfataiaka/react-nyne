@@ -1,4 +1,7 @@
 # React-Nyne
+
+[![Build Status](https://travis-ci.org/abdulfataiaka/react-nyne.svg?branch=develop)](https://travis-ci.org/abdulfataiaka/react-nyne)
+
 This is a simple react game application which requires players to select different possible combinations of numbers based on the number of stars shown to them.
 
 Players wins the game when they successfully use all available numbers while they have the ability to refresh the number stars shown by clicking on the refresh button a limited number of times, usually `5 times`.

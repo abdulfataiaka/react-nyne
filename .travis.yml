@@ -1,0 +1,24 @@
+language : "node_js"
+node_js :
+  - "8"
+cache:
+ directories:
+  - "node_modules"
+env:
+  global:
+    - export NODE_ENV=test
+script:
+  - yarn test
+
+before_deploy: yarn global add now
+deploy:
+  - provider: script # Run a custom deployment script which we will define below
+    script: now --token $NOW_TOKEN_ONE
+    skip_cleanup: true
+    on:
+      all_branches: false
+      develop: true
+
+# after_success:
+#   - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/lcov.info
+#   - npm run coveralls
