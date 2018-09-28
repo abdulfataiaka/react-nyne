@@ -16,8 +16,7 @@ deploy:
     script: now --token $NOW_TOKEN_ONE
     skip_cleanup: true
     on:
-      all_branches: false
-      develop: true
+      branch: develop
 
 # after_success:
 #   - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/lcov.info
