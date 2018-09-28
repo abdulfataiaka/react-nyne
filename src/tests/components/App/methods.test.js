@@ -2,6 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import App from '../../../components/App';
 
+const numpadBtnClickEvent = (num) => ({
+  target: {
+    innerHTML: num
+  }
+});
+
 const answersMock = [
   {
     used: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -12,12 +18,6 @@ const answersMock = [
     selected: []
   }
 ];
-
-const numpadBtnClickEvent = (num) => ({
-  target: {
-    innerHTML: num
-  }
-});
 
 const answerVerifyState = [
   {
@@ -86,6 +86,11 @@ describe('App Component Methods', () => {
   });
 
   describe('openModal and closeModal', () => {
+    it('should not perform any action', () => {
+      app.openModal('bad-modal');
+      expect(app.state.modal.type).toBe(null);
+    });
+
     it('should set modal type to info', () => {
       app.openModal('info');
       expect(app.state.modal.type).toBe('info');
@@ -111,6 +116,67 @@ describe('App Component Methods', () => {
       expect(app.state.answers.used).toEqual(
         answerVerifyState[1].answers.selected
       );
+    });
+  });
+
+  describe('refreshOnClick', () => {
+    it('should show the info modal', () => {
+      app.setState({ refresh: 0 });
+      app.refreshOnClick();
+      expect(app.state.modal.type).toBe('info');
+    });
+
+    it('should decrement refresh count', () => {
+      app.setState({ refresh: 4 });
+      app.refreshOnClick();
+      expect(app.state.refresh).toBe(3);
+    });
+  });
+
+  describe('nextOnClick', () => {
+    it('should close the next section', () => {
+      app.setState({ showNext: true });
+      app.nextOnClick();
+      expect(app.state.showNext).toBe(false);
+    });
+  });
+
+  describe('numPadNumberClick', () => {
+    it('should show info for maximum answers selected', () => {
+      app.setState({ answers: {
+        used: [],
+        selected: [4, 6, 7, 2, 1]
+      }});
+      app.numPadNumberClick(numpadBtnClickEvent(5));
+      expect(app.state.modal.type).toBe('info');
+    });
+
+    it('should add selected number to selected state', () => {
+      app.setState({ answers: {
+        used: [],
+        selected: [1]
+      }});
+      app.numPadNumberClick(numpadBtnClickEvent(5));
+      expect(app.state.answers.selected.includes(5)).toBe(true);
+    });
+  });
+
+  describe('answerNumberClick', () => {
+    it('should revert selection', () => {
+      app.setState({ answers: {
+        used: [],
+        selected: [1]
+      }});
+      app.answerNumberClick(numpadBtnClickEvent(1));
+      expect(app.state.answers.selected.includes(1)).toBe(false);
+    });
+  });
+
+  describe('initPlayOnClick', () => {
+    it('should reset game', () => {
+      app.initPlayOnClick();
+      expect(app.state.refresh).toBe(5);
+      expect(app.state.answers).toEqual(answersMock[1]);
     });
   });
 });
