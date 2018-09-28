@@ -8,9 +8,12 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "./node_modules/jest/bin/jest.js"
+    "test": "./node_modules/jest/bin/jest.js",
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "dependencies": {
+    "codeclimate-test-reporter": "^0.5.0",
+    "coveralls": "^3.0.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "webpack": "^4.20.0",

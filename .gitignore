@@ -6,3 +6,6 @@
 
 # ignore node_modules in current and sub directories
 node_modules/
+
+# ignore coverage folder
+/coverage/
