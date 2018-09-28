@@ -11,18 +11,18 @@ env:
 script:
   - yarn test
 
-# before_deploy:
-#   - yarn install
-#   - yarn global add now
-#   - now rm react-nyne -y --token $NOW_TOKEN_ONE || true
+before_deploy:
+  - yarn install
+  - yarn global add now
+  - now rm react-nyne -y --token $NOW_TOKEN_ONE || true
 
-# deploy:
-#   provider: script
-#   script: now --token $NOW_TOKEN_ONE --public
-#   skip_cleanup: true
-#   on:
-#     branch: develop
-#     master: true
+deploy:
+  provider: script
+  script: now --token $NOW_TOKEN_ONE --public
+  skip_cleanup: true
+  on:
+    branch: develop
+    master: true
 
 after_success:
   - yarn run coveralls
