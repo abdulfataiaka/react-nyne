@@ -7,18 +7,23 @@ cache:
 env:
   global:
     - export NODE_ENV=test
+
 script:
   - yarn test
 
-before_deploy: yarn global add now
-deploy:
-  - provider: script # Run a custom deployment script which we will define below
-    script: now --token $NOW_TOKEN_ONE
-    skip_cleanup: true
-    on:
-      branch: develop
+before_deploy:
+  - yarn install
+  - yarn global add now
+  - now rm react-nyne -y --token $NOW_TOKEN_ONE || true
 
-      
+deploy:
+  provider: script
+  script: now --token $NOW_TOKEN_ONE --public
+  skip_cleanup: true
+  on:
+    branch: develop
+    master: true
+
 # after_success:
 #   - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/lcov.info
 #   - npm run coveralls
