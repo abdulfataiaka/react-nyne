@@ -1,15 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Modal from '../../components/Modal/Index';
+import InfoModal from '../../components/Modal/InfoModal';
 
 describe('Modal Components', () => {
-  const props = {
-    type: null,
-    props: {},
-    close: jest.fn(),
-  }
-
   describe('No Modal Rendered', () => {
+    const props = {
+      type: null,
+      props: {},
+      close: jest.fn(),
+    }
+
     const wrapper = shallow(
       <Modal {...props} />
     );
@@ -24,20 +25,22 @@ describe('Modal Components', () => {
   });
 
   describe('InfoModal Component', () => {
-    const newprops = {
-      ...props,
-      type: 'info'
+    const props = {
+      message: 'hello there',
+      close: jest.fn()
     }
     const wrapper = shallow(
-      <Modal {...newprops} />
+      <InfoModal {...props} />
     );
 
-    it('should render successfully', () => {
+    const infoModal = wrapper.instance();
+
+    it('should render info modal', () => {
       expect(wrapper.length).toBe(1);
     });
 
-    it('should render info modal', () => {
-      expect(wrapper.find('InfoModal').length).toBe(1);
+    it('should click button', () => {
+      infoModal.okClick();
     });
   });
 });
