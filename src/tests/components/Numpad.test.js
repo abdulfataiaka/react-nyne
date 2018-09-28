@@ -1,9 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Numpad from '../components/Numpad';
+import Numpad from '../../components/Numpad';
 
 describe('Numpad Component', () => {
-  const wrapper = shallow(<Numpad />);
+  const props = {
+    answers: {
+      used: [],
+      selected: []
+    }
+  };
+
+  const wrapper = shallow(<Numpad { ...props } />);
 
   it('should render successfully', () => {
     expect(wrapper.length).toBe(1);

@@ -42,7 +42,7 @@ class App extends Component {
    * 
    * @memberof App
    */
-  componentDidUpdate(prevProp, prevState) {
+  componentDidUpdate() {
     const {
       answers: { used },
       stars,
@@ -98,28 +98,6 @@ class App extends Component {
   /**
    * 
    * 
-   * @description check for possible combinations
-   * 
-   * @param { Array } answers
-   * @param { Integer } stars
-   * 
-   * @memberof App
-   */
-  possibleCombExists = (usedNumbers, stars) => {
-    const answers = range(1, 9).filter(number => !usedNumbers.includes(number));
-    if (answers.includes(stars)) return true;
-    const subsets = arraySubsets(answers);
-
-    return subsets.some(subset => {
-      return stars === subset.reduce(
-        (number, next) => number + next, 0
-      );
-    });
-  }
-
-  /**
-   * 
-   * 
    * @description open a modal
    * 
    * @param { String } type
@@ -156,26 +134,23 @@ class App extends Component {
   /**
    * 
    * 
-   * @description show bottom thumb
+   * @description check for possible combinations
    * 
-   * @param { String } type
+   * @param { Array } answers
+   * @param { Integer } stars
    * 
    * @memberof App
-   * 
-   * @returns { JSX }
    */
-  renderThumb = (type) => {
-    if (!['up', 'down'].includes(type)) {
-      type = '';
-    }
+  possibleCombExists = (usedNumbers, stars) => {
+    const answers = range(1, 9).filter(number => !usedNumbers.includes(number));
+    if (answers.includes(stars)) return true;
+    const subsets = arraySubsets(answers);
 
-    return (
-      <span className={`thumb ${type}`}>
-        <i className={`fas fa-thumbs-${
-          type === 'down' ? 'down' : 'up'
-        }`} />
-      </span>
-    );
+    return subsets.some(subset => {
+      return stars === subset.reduce(
+        (number, next) => number + next, 0
+      );
+    });
   }
 
   /**
@@ -283,6 +258,45 @@ class App extends Component {
   /**
    * 
    * 
+   * @description generate next stars
+   * 
+   * @memberof App
+   */
+  nextOnClick = () => {
+    this.setState(({ stars }) => ({
+      stars: random(stars),
+      showNext: false
+    }));
+  }
+
+  /**
+   * 
+   * 
+   * @description show bottom thumb
+   * 
+   * @param { String } type
+   * 
+   * @memberof App
+   * 
+   * @returns { JSX }
+   */
+  renderThumb = (type) => {
+    if (!['up', 'down'].includes(type)) {
+      type = '';
+    }
+
+    return (
+      <span className={`thumb ${type}`}>
+        <i className={`fas fa-thumbs-${
+          type === 'down' ? 'down' : 'up'
+        }`} />
+      </span>
+    );
+  }
+
+  /**
+   * 
+   * 
    * @description render answers
    * 
    * @memberof App
@@ -313,20 +327,6 @@ class App extends Component {
       )
   }
   
-  /**
-   * 
-   * 
-   * @description generate next stars
-   * 
-   * @memberof App
-   */
-  nextOnClick = () => {
-    this.setState(({ stars }) => ({
-      stars: random(stars),
-      showNext: false
-    }));
-  }
-
   /**
    * 
    * 
@@ -362,6 +362,60 @@ class App extends Component {
   /**
    * 
    * 
+   * @description render next on correct selection
+   *  
+   * @param { Boolean } showNext 
+   * 
+   * @memberof App
+   */
+  renderNext(showNext) {
+    return (
+      <div id="next" style={{
+        display: showNext ? 'block' : 'none'
+      }}>
+        <div className="overlay" />
+        <button
+          type="button"
+          className="btn-unstyled"
+          onClick={this.nextOnClick}
+        >
+          <i className="fas fa-thumbs-up" />
+          Next
+        </button>
+      </div>
+    );
+  }
+
+  /**
+   * 
+   * 
+   * @description render refresh count and thumb
+   *  
+   * @param { Integer } refresh 
+   * @param { String | null } thumb
+   * 
+   * @memberof App
+   */
+  renderBase(refresh, thumb) {
+    return (
+      <div id="refresh" className="clearfix">
+        <button
+          type="button"
+          onClick={this.refreshOnClick}
+        >
+          <i className="fas fa-sync-alt" />
+          <span>{ refresh }</span>
+        </button>
+
+        <div>Refresh remaining</div>
+        { this.renderThumb(thumb) }
+      </div>
+    );
+  }
+
+  /**
+   * 
+   * 
    * @description component render method
    * 
    * @returns { JSX }
@@ -381,10 +435,11 @@ class App extends Component {
 
     return (
       <div id="wrapper">
-        <header>
-          REACT NYNE
-        </header>
+        
+        <header>REACT NYNE</header>
+
         <main>
+
           <Modal
             {...modal}
             close={this.closeModal}
@@ -394,51 +449,25 @@ class App extends Component {
             status={gameStatus}
             startRound={this.initPlayOnClick}
           />
-
-          <section id="stars">
-            <Stars count={stars} />
-          </section>
-
+          
+          <Stars count={stars} />
+         
           <section id="answers" className="clearfix">
             { this.renderAnswers() }
           </section>
 
-          <div id="operations">
-            <div id="next" style={{
-              display: showNext ? 'block' : 'none'
-            }}>
-              <div className="overlay" />
-              <button
-                type="button"
-                className="btn-unstyled"
-                onClick={this.nextOnClick}
-              >
-                <i className="fas fa-thumbs-up" />
-                Next
-              </button>
-            </div>
-          
-            <section id="numpad" className="clearfix">
-              <Numpad
-                answers={answers}
-                numClick={this.numPadNumberClick}
-                checkClick={this.answerVerifyClick}
-              />
-            </section>
+          <section id="operations">
+            { this.renderNext(showNext) }
 
-            <section id="refresh" className="clearfix">
-              <button
-                type="button"
-                onClick={this.refreshOnClick}
-              >
-                <i className="fas fa-sync-alt" />
-                <span>{ refresh }</span>
-              </button>
+            <Numpad
+              answers={answers}
+              numClick={this.numPadNumberClick}
+              checkClick={this.answerVerifyClick}
+            />
+            
+            { this.renderBase(refresh, thumb) }
+          </section>
 
-              <div>Refresh remaining</div>
-              { this.renderThumb(thumb) }
-            </section>
-          </div>
         </main>
         <footer></footer>
       </div>
