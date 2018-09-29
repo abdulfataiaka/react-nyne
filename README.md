@@ -1,6 +1,6 @@
 # React-Nyne
 
-[![Build Status](https://travis-ci.org/abdulfataiaka/react-nyne.svg?branch=develop)](https://travis-ci.org/abdulfataiaka/react-nyne) [![Maintainability](https://api.codeclimate.com/v1/badges/f941e079182757e77acd/maintainability)](https://codeclimate.com/github/abdulfataiaka/react-nyne/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/f941e079182757e77acd/test_coverage)](https://codeclimate.com/github/abdulfataiaka/react-nyne/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/abdulfataiaka/react-nyne/badge.svg?branch=ch-coverall-codeclimate-160845239)](https://coveralls.io/github/abdulfataiaka/react-nyne?branch=ch-coverall-codeclimate-160845239)
+[![Build Status](https://travis-ci.org/abdulfataiaka/react-nyne.svg?branch=develop)](https://travis-ci.org/abdulfataiaka/react-nyne) [![Maintainability](https://api.codeclimate.com/v1/badges/f941e079182757e77acd/maintainability)](https://codeclimate.com/github/abdulfataiaka/react-nyne/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/f941e079182757e77acd/test_coverage)](https://codeclimate.com/github/abdulfataiaka/react-nyne/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/abdulfataiaka/react-nyne/badge.svg?branch=develop)](https://coveralls.io/github/abdulfataiaka/react-nyne?branch=develop)
 
 This is a simple react game application which requires players to select different possible combinations of numbers based on the number of stars shown to them.
 
